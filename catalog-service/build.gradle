@@ -1,0 +1,50 @@
+buildscript {
+	ext {
+		h2Version = "2.1.214"
+		openCsvVersion = "5.7.0"
+        mapstructVersion = "1.5.3.Final"
+        springCloudVersion = "3.1.4"
+        zipkinVersion = "2.2.8.RELEASE"
+	}
+}
+
+plugins {
+	id "org.springframework.boot" version "2.7.5"
+	id "io.spring.dependency-management" version "1.0.15.RELEASE"
+	id "java"
+}
+
+group = "com.korovko"
+version = "0.0.1-SNAPSHOT"
+sourceCompatibility = "17"
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${springCloudVersion}"
+    implementation "org.springframework.cloud:spring-cloud-starter-sleuth:${springCloudVersion}"
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    implementation "com.h2database:h2:${h2Version}"
+    implementation "com.opencsv:opencsv:${openCsvVersion}"
+
+    compileOnly "org.projectlombok:lombok"
+
+    annotationProcessor "org.projectlombok:lombok"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+}
+
+tasks.named("test") {
+    useJUnitPlatform()
+}

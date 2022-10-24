@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: product-service
+  zipkin:
+    base-url: http://localhost:9411/
+  sleuth:
+    sampler:
+      probability: 1
+
+server:
+  port: 8082
+
+logging:
+  level:
+    root: info
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+
+clients:
+  catalog-service:
+    url: http://catalog-service
+    apis:
+      product-by-id: /catalog/products/{productId}
+      list-by-sku: /catalog/products
+  inventory-service:
+    url: http://inventory-service
+    apis:
+      products-by-ids: /inventory/products

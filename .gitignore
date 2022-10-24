@@ -1,0 +1,13 @@
+# Project exclude paths
+/catalog-service/.gradle/
+/catalog-service/build/
+/catalog-service/build/classes/java/main/
+/inventory-service/.gradle/
+/inventory-service/build/
+/inventory-service/build/classes/java/main/
+/product-service/.gradle/
+/product-service/build/
+/product-service/build/classes/java/main/
+/registry-service/.gradle/
+/registry-service/build/
+/registry-service/build/classes/java/main/
